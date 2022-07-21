@@ -1,0 +1,36 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Category {
+  _id: ObjectId!
+  color: String!
+  icon: String!
+  name: String!
+}
+
+input CreateCategoryInput {
+  color: String!
+  icon: String!
+  name: String!
+}
+
+type Mutation {
+  createCategory(category: CreateCategoryInput!): Category!
+  removeCategory(id: ObjectId!): Category!
+  updateCategory(category: UpdateCategoryInput!, id: ObjectId!): Category!
+}
+
+"""MongoDB ObjectId scalar type."""
+scalar ObjectId
+
+type Query {
+  categories: [Category!]!
+  category(id: ObjectId!): Category
+}
+
+input UpdateCategoryInput {
+  color: String!
+  icon: String!
+  name: String
+}
