@@ -2,7 +2,7 @@ import { BadRequestException, Injectable, InternalServerErrorException, NotFound
 import { InjectModel } from '@nestjs/mongoose';
 import { Model, Types as MongooseTypes } from 'mongoose';
 
-import { Category, CategoryDocument } from './model/categories.model';
+import { Category, CategoryDocument } from './model/category.model';
 import { CreateCategoryInput, UpdateCategoryInput } from './dto/categories.input.dto';
 
 @Injectable()

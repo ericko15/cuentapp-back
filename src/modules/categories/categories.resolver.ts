@@ -1,5 +1,5 @@
 import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
-import { Category } from './model/categories.model';
+import { Category } from './model/category.model';
 import { CategoriesService } from './categories.service';
 import { ObjectIdScalar } from 'src/common/scalars/object-id.scalar';
 
@@ -23,19 +23,19 @@ export class CategoriesResolver {
   @Mutation(() => Category)
   async createCategory(
     @Args({ name: 'category', type: () => CreateCategoryInput })
-    input: CreateCategoryInput,
+    categoryData: CreateCategoryInput,
   ) {
-    return await this.categoriesService.create(input);
+    return await this.categoriesService.create(categoryData);
   }
 
   @Mutation(() => Category)
   async updateCategory(
     @Args({ name: 'category', type: () => UpdateCategoryInput })
-    input: UpdateCategoryInput,
+    categoryData: UpdateCategoryInput,
     @Args({ name: 'id', type: () => ObjectIdScalar })
     id: MongooseTypes.ObjectId,
   ) {
-    return await this.categoriesService.update(id, input);
+    return await this.categoriesService.update(id, categoryData);
   }
 
   @Mutation(() => Category)

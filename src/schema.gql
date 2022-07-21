@@ -2,10 +2,27 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+type Account {
+  _id: ObjectId!
+  amount: Float!
+  color: String!
+  icon: String!
+  isVisible: Boolean!
+  name: String!
+}
+
 type Category {
   _id: ObjectId!
   color: String!
   icon: String!
+  name: String!
+}
+
+input CreateAccountInput {
+  amount: Float!
+  color: String!
+  icon: String!
+  isVisible: Boolean
   name: String!
 }
 
@@ -16,8 +33,11 @@ input CreateCategoryInput {
 }
 
 type Mutation {
+  createAccount(account: CreateAccountInput!): Account!
   createCategory(category: CreateCategoryInput!): Category!
+  removeAccount(id: ObjectId!): Account!
   removeCategory(id: ObjectId!): Category!
+  updateAccount(account: UpdateAccountInput!, id: ObjectId!): Account!
   updateCategory(category: UpdateCategoryInput!, id: ObjectId!): Category!
 }
 
@@ -25,8 +45,18 @@ type Mutation {
 scalar ObjectId
 
 type Query {
+  account(id: ObjectId!): Account
+  accounts: [Account!]!
   categories: [Category!]!
   category(id: ObjectId!): Category
+}
+
+input UpdateAccountInput {
+  amount: Float
+  color: String
+  icon: String
+  isVisible: Boolean
+  name: String
 }
 
 input UpdateCategoryInput {
