@@ -45,20 +45,20 @@ export class UpdateAccountInput {
   @MinLength(2)
   @MaxLength(100)
   @Field(() => String, { nullable: true })
-  name: string;
+  name?: string;
 
   @IsOptional()
   @IsNotEmpty()
   @IsNumber()
   @Min(0)
   @Field(() => Number, { nullable: true })
-  amount: string;
+  amount?: string;
 
   @IsOptional()
   @IsNotEmpty()
   @IsBoolean()
   @Field(() => Boolean, { nullable: true })
-  isVisible: boolean;
+  isVisible?: boolean;
 
   @IsOptional()
   @IsNotEmpty()
@@ -66,7 +66,7 @@ export class UpdateAccountInput {
   @MinLength(2)
   @MaxLength(100)
   @Field(() => String, { nullable: true })
-  color: string;
+  color?: string;
 
   @IsOptional()
   @IsNotEmpty()
@@ -74,5 +74,5 @@ export class UpdateAccountInput {
   @MinLength(2)
   @MaxLength(100)
   @Field(() => String, { nullable: true })
-  icon: string;
+  icon?: string;
 }

@@ -32,13 +32,39 @@ input CreateCategoryInput {
   name: String!
 }
 
+input CreateMovementInput {
+  account: ObjectId!
+  amount: Float!
+  category: ObjectId!
+  description: String!
+  movementType: MovementTypeEnum!
+}
+
+type Movement {
+  _id: ObjectId!
+  account: Account!
+  amount: Float!
+  category: Category!
+  description: String!
+  movementType: MovementTypeEnum!
+}
+
+"""Movement types"""
+enum MovementTypeEnum {
+  DEPOSIT
+  SPENT
+}
+
 type Mutation {
   createAccount(account: CreateAccountInput!): Account!
   createCategory(category: CreateCategoryInput!): Category!
+  createMovement(movement: CreateMovementInput!): Movement!
   removeAccount(id: ObjectId!): Account!
   removeCategory(id: ObjectId!): Category!
+  removeMovement(id: ObjectId!): Movement!
   updateAccount(account: UpdateAccountInput!, id: ObjectId!): Account!
   updateCategory(category: UpdateCategoryInput!, id: ObjectId!): Category!
+  updateMovement(id: ObjectId!, movement: UpdateMovementInput!): Movement!
 }
 
 """MongoDB ObjectId scalar type."""
@@ -49,6 +75,8 @@ type Query {
   accounts: [Account!]!
   categories: [Category!]!
   category(id: ObjectId!): Category
+  movement(id: ObjectId!): Movement
+  movements: [Movement!]!
 }
 
 input UpdateAccountInput {
@@ -63,4 +91,12 @@ input UpdateCategoryInput {
   color: String!
   icon: String!
   name: String
+}
+
+input UpdateMovementInput {
+  account: ObjectId
+  amount: Float
+  category: ObjectId
+  description: String
+  movementType: MovementTypeEnum
 }
