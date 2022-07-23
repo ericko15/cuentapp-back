@@ -16,6 +16,7 @@ import { join } from 'path';
       playground: true,
       introspection: true,
       debug: true,
+      persistedQueries: false,
     }),
   ],
   exports: [GraphQLModule],
